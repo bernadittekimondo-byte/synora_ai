@@ -1,0 +1,15 @@
+{
+  "name": "ai-social-saas",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n api,worker,web -c blue,green,magenta \"npm run dev -w apps/api\" \"npm run dev -w apps/worker\" \"npm run dev -w apps/web\"",
+    "migrate": "npm run migrate -w packages/database",
+    "migration": "npm run migrate",
+    "seed:admin": "npm run seed:admin -w packages/database",
+    "build": "npm run build -w apps/web"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
